@@ -6,9 +6,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
-    tax = 1.1
     @item = Item.find(params[:id])
-    @in_tax = (@item.price * tax).to_i
   end
 
   def new

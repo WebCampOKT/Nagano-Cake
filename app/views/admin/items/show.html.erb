@@ -1,8 +1,8 @@
 <div class="container">
-  <h4 class="mt-5"><span class="bg-secondary">商品詳細</span></h1>
+  <h4 class="mt-5"><span style="background: #FFEBD2;">商品詳細</span></h4>
   <div class="row">
     <div class="col-4">
-      <%= image_tag @item.get_image(400,300) %>
+      <%= image_tag @item.get_image(300,300) %>
     </div>
     <div class="col-8">
       <table class="table mt-4">
@@ -21,7 +21,7 @@
           </tr>
           <tr>
             <td>税込価格</br>（税抜価格）</td>
-            <td><%= @in_tax.to_s(:delimited) %>（<%= @item.price.to_s(:delimited) %>）円</td>
+            <td><%= @item.add_tax_price.to_s(:delimited) %>（<%= @item.price.to_s(:delimited) %>）円</td>
           </tr>
           <tr>
             <td>販売ステータス</td>
