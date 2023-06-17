@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
 
     # 顧客のマイページ
     def show
-
+        @customer = current_customer
     end
 
     # 顧客の登録情報編集画面
@@ -13,8 +13,8 @@ class Public::CustomersController < ApplicationController
     # 顧客の登録情報更新
     def update
         @customer = current_customer
-        @customer.update
-        render :edit
+        @customer.update(customer_params)
+        redirect_to customers_my_page_path
     end
 
     # 顧客の退会確認画面

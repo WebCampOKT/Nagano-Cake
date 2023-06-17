@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <h2 class="mb-5 mt-5">新規会員登録</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
     <div class="row mb-4">
@@ -13,7 +13,7 @@
         <%= f.text_field :first_name,autofocus: true, autocomplete: "first_name",  placeholder: "道子", size: 30 %>
       </div>
     </div>
-  
+
     <div class="row mb-4">
       <label class="col-lg-3">フリガナ</label>
       <div class="col-lg-4">
@@ -23,35 +23,35 @@
         <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana",  placeholder: "ミチコ", size: 30 %>
       </div>
     </div>
-  
+
     <div class="row mb-4">
       <label class="col-lg-3">メールアドレス</label>
       <div class="col-lg-4">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'sample@example.com', size: 30 %>
       </div>
     </div>
-  
+
     <div class="row mb-4">
       <label class="col-lg-3">郵便番号（ハイフンなし）</label>
       <div class="col-lg-4">
         <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: '0000000', size: 30 %>
       </div>
     </div>
-  
+
     <div class="row mb-4">
       <label class="col-lg-3">住所</label>
       <div class="col-lg-4">
         <%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: '東京都渋谷区代々木神圓街０−０', size: 85 %>
       </div>
     </div>
-  
+
     <div class="row mb-4">
       <label class="col-lg-3">電話番号（ハイフンなし）</label>
       <div class="col-lg-4">
         <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: '0000000000', size: 30 %>
       </div>
     </div>
-  
+
     <div class="row mb-4">
       <label class="col-lg-3">パスワード
         <% if @minimum_password_length %>
@@ -62,14 +62,14 @@
         <%= f.password_field :password, autocomplete: "new-password", size: 30 %>
       </div>
     </div>
-  
+
     <div class="row mb-4">
       <label class="col-lg-3">パスワード確認用</label>
       <div class="col-lg-4">
         <%= f.password_field :password_confirmation, autocomplete: "new-password", size: 30 %>
       </div>
     </div>
-  
+
     <div class="row mb-4">
       <div class="col-lg-3"></div>
       <div class="col-lg-4">
