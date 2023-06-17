@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <div class="col-md-12">
+    <h4>さんの会員詳細</h4>
+    <table class="table table-borderless">
+      <tr>
+        <td class="col-md-2">会員ID</td>
+        <td class="col-md-5"><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <td class="col-md-2">氏名</td>
+        <td class="col-md-5"><%= @customer.last_name %>&ensp;<%= @customer.first_name %></td>
+      </tr>
+    </table>
+  </div>
+</div>
