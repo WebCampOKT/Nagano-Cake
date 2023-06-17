@@ -5,11 +5,12 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
+    @genres = Genre.all
     @genre = Genre.new(genre_params)
     if @genre.save
       redirect_to admin_genres_path
     else
-      render 'index'
+      render :index
     end
   end
 
@@ -18,11 +19,10 @@ class Admin::GenresController < ApplicationController
   end
 
   def update
-    @genre = Genre.find(params[:id])
     if @genre = Genre.update(genre_params)
       redirect_to admin_genres_path
     else
-      render 'edit'
+      render :edit
     end
   end
 
