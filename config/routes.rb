@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
+    resources :orders, only: [:show, :update] do
+      resource :order_detail, only: [:update]
+    end
   end
   namespace :public do
     get 'homes/top'
@@ -24,6 +27,7 @@ Rails.application.routes.draw do
      get 'customers/infomation/edit' => 'customers#edit'
      get 'customers/my_page' => 'customers#show'
      resources :items, only: [:index, :show]
+     resources :orders, only:[:new, :index, :show, :create, :confirm, :complete]
    end
 
   root to: 'public/homes#top'
