@@ -27,7 +27,9 @@ Rails.application.routes.draw do
      get 'customers/infomation/edit' => 'customers#edit'
      get 'customers/my_page' => 'customers#show'
      resources :items, only: [:index, :show]
-     resources :orders, only:[:new, :index, :show, :create, :confirm, :complete]
+     resources :orders, only:[:new, :index, :show, :create]
+     get 'orders/confirm' => 'orders#confirm'
+     get 'orders/complete' => 'orders#complete'
    end
 
   root to: 'public/homes#top'
