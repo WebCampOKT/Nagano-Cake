@@ -19,7 +19,7 @@
               <%= link_to 'カート', about_path, class: 'nav-link text-light' %>
             </li>
             <li>
-               <%= link_to 'ログアウト', destroy_customer_session_path, class: 'nav-link text-light' %>
+               <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
           <% elsif admin_signed_in? %>
             <li>
@@ -35,7 +35,7 @@
               <%= link_to 'ジャンル一覧', about_path, class: 'nav-link text-light' %>
             </li>
             <li>
-              <%= link_to 'ログアウト', destroy_admin_session_path, class: 'nav-link text-light' %>
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
           <% else %>
             <li>
