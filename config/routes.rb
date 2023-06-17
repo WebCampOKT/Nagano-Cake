@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
     resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, only: [:index, :show, :new, :create, :edit, :up]
   end
   namespace :public do
     get 'homes/top'
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
      resources :customers, only: [:update, :edit, :destroy ]
      get 'customers/infomation/edit' => 'customers#edit'
      get 'customers/my_page' => 'customers#show'
+     resources :items, only: [:index, :show]
    end
 
   root to: 'public/homes#top'
