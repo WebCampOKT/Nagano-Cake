@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:index, :show, :new, :create, :edit, :up]
+    resources :items, only: [:index, :show, :new, :create, :edit, :update]
   end
   namespace :public do
     get 'homes/top'
