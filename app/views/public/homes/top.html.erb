@@ -1,14 +1,17 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
+      <%= render 'admin/genres/index', genres: @genres %>
     </div>
     <div class="col-md-8">
-      <div>
-        <label for="inputPassword4" class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword4">
+      <div style="background-image: url(<%= asset_path('display.jpg') %>)">
+        <p>
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
       </div>
-      <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4">
     </div>
   </div>
 </div>
