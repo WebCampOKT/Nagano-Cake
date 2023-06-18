@@ -1,17 +1,30 @@
-<div class="container-fluid">
+<div class="container-fluid" style="margin: 20px 0;">
   <div class="row">
     <div class="col-md-3">
       <%= render 'admin/genres/index', genres: @genres %>
     </div>
     <div class="col-md-8">
-      <div style="background-image: url(<%= asset_path('display.jpg') %>)">
-        <p>
+      <div style="background-image: url(<%= asset_path('display.jpg') %>);">
+        <p style="padding: 160px 0; text-align: center; background-color: rgba(255, 255, 255, 0.6); font-size: 18px; font-weight: bold;">
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。
         </p>
       </div>
+      <h1 class="mt-4"><span style="background: #FFEBD2;">新着商品</span></h1>
+      <div class="d-flex flex-wrap my-3">
+        <% @items.each do |item| %>
+          <div class="pr-4 pb-3">
+            <%= link_to item_path(item), class: "text-dark" do %>
+              <%= image_tag item.get_image(180,180) %></br>
+              <%= item.name %></br>
+            <% end %>
+            ￥<%= item.add_tax_price.to_s(:delimited) %>
+          </div>
+        <% end %>
+      </div>
+      <div style="text-align: right;"><%= link_to '全ての商品を見る>', items_path %></div>
     </div>
   </div>
 </div>
