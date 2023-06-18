@@ -48,6 +48,18 @@
         </div>
       </div>
   </div>
+  <div class="row">
+    <div class='col-11 offset-1'>
+        <table class="table table-borderless">
+            <tr><th class="col-2">支払い方法</th><td class="col-10"><%= @order.payment %></td></tr>
+            <tr><th class="col-2">お届け先</th><td class="col-10">
+            〒<%= @order.postal_code %>
+            <%= @order.address %>
+            <%= @order.name %>
+            </td></tr>
+        </table>
+      </div>
+    </div>
   <div class="row justify-content-center">
     <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :customer_id %>
