@@ -1,8 +1,7 @@
 <div class="container mt-4">
-  <h2 class="mb-5 mt-5">会員情報編集</h2>
+  <h4 class="mb-5 mt-5"><span style="background: #FFEBD2;">会員情報編集</h4>
 
-  <%= form_with model: @customer do |f| %>
-
+  <%= form_with model: [:admin, @customer] do |f| %>
   <div class="row mb-4">
     <label class="col-lg-3">名前</label>
     <div class="col-lg-4">
