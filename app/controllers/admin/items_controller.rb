@@ -1,5 +1,6 @@
 class Admin::ItemsController < ApplicationController
   # before_action :authenticate_admin!
+  before_action :set_select_genres, only: [:new, :edit]
 
   def index
     @items = Item.all
@@ -34,4 +35,7 @@ class Admin::ItemsController < ApplicationController
     params.require(:item).permit(:genre_id, :name, :caption, :price, :is_sales, :image)
   end
 
+  def set_select_genres
+    @genres = Genre.all.map {|genre| [genre.name, genre.id] }.unshift(["--選択してください--", nil])
+  end
 end
