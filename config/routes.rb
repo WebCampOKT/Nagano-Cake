@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
+    resources :customers, only: [:index, :edit, :update, :show]
   end
   namespace :public do
     get 'homes/top'
@@ -16,10 +17,6 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  
-   namespace :admin do
-     resources :customers, only: [:index, :edit, :update, :show]
-   end
 
   scope module: :public do
     resources :customers, only: [:update, :edit, :destroy ]
