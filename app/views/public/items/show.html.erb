@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-2 mt-4">
-      ここにジャンル一覧render
+      <%= render '/admin/genres/index', genres: @genres %>
     </div>
     <div class="col-4 mt-4">
       <%= image_tag @item.get_image(300,300) %>
@@ -17,10 +17,9 @@
       <% if @item.is_sales == true %>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
           <div class="form-group">
-            <%= f.select :quantity, *[1..10], { include_blank: '個数選択'} %>
-            <!--ここにカスタマーIDをおくるhidden_fieldがほしい-->
+            <%= f.select :quantity, *[1..10], { include_blank: '個数選択'}, class: "form-select-lg" %>
             <%= f.hidden_field :item_id, :value => @item.id %>
-            <%= f.submit "カートに入れる" %>
+            <%= f.submit "カートに入れる", class: "btn btn-secondary" %>
           </div>
         <% end %>
       <% else %>
