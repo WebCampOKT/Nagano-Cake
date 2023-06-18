@@ -6,11 +6,9 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.customer_id = current_customer_id
+    @order.customer_id = current_customer
     if @order.save
       redirect_to order_confirm_path(@order)
-    else
-      render 'new'
     end
   end
 
