@@ -1,1 +1,21 @@
-public#item#index
+<div class="container">
+  <div class="row">
+    <div class="col-3 mt-4">
+      ここにジャンル一覧render
+    </div>
+    <div class="col-9">
+      <h4 class="mt-4"><span style="background: #FFEBD2;">商品一覧</span></h4>
+        <div class="d-flex flex-wrap my-3">
+          <% @items.each do |item| %>
+            <div class="pr-4 pb-3">
+              <%= link_to item_path(item), class: "text-dark" do %>
+                <%= image_tag item.get_image(180,180) %></br>
+                <%= item.name %></br>
+              <% end %>
+              ￥<%= item.add_tax_price.to_s(:delimited) %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

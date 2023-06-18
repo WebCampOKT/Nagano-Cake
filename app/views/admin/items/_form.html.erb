@@ -1,4 +1,8 @@
-<%= form_with model: item, url: admin_item_path do |f| %>
+<% if request.path_info == new_admin_item_path %>
+  <%= form_with model: item, url: admin_items_path do |f| %>
+<% else %>
+  <%= form_with model: item, url: admin_item_path(item) do |f| %>
+<% end %>
   <div class="form-group row mt-5">
     <%= f.label :image, "商品画像", class: "col-4 col-form-label" %>
     <%= f.file_field :image, class: "btn" %>
