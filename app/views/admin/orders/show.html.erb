@@ -1,12 +1,75 @@
-<div class="row">
-  <div class='col-11 offset-1'>
-    <table class="table table-borderless">
-        <tr><th class="col-2">支払い方法</th><td class="col-10"><%= @order.payment %></td></tr>
-        <tr><th class="col-2">お届け先</th><td class="col-10">
-        〒<%= @order.postal_code %>
-        <%= @order.address %>
-        <%= @order.name %>
-        </td></tr>
-    </table>
+<div class="container">
+  <h4 class="my-4">注文履歴詳細</h4>
+  <%= form_with model: @order, method: :patch do |f| %>
+  <div class="row">
+    <div class='col-11 offset-1'>
+      <table class="table table-borderless">
+        <tr>
+          <th class="col-2">購入者</th>
+          <td class="col-9">山田　太郎</td>
+        </tr>
+       <tr>
+          <th class="col-2">注文日</th>
+          <td class="col-9">2019/12/02</td>
+        </tr>
+        <tr>
+          <th class="col-2">配送先</th>
+          <td class="col-9">**********</td>
+        </tr>
+        <tr>
+          <th class="col-2">支払い方法</th>
+          <td class="col-9">銀行振込</td>
+        </tr>
+        <tr>
+          <th class="col-2">注文ステータス</th>
+          <td class="col-9"><%= f.select :status, [['入金待ち', 0], ['入金確認', 1], ['制作中', 2], ['発送準備中', 3], ['発送済み', 4]] %></td>
+        </tr>
+      </table>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ショートケーキ</td>
+            <td>1200</td>
+            <td>2</td>
+            <td>2400</td>
+            <td>
+              <%= f.select :status, [['着手不可', 0], ['制作待ち', 1], ['制作中', 2], ['制作完了', 3]] %>
+            </td>
+            <td><%= link_to '更新', new_order_path, class: 'btn btn-success' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='col-md-3 offset-md-1'>
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th>
+          <td>2400円</td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td>800円</td>
+        </tr>
+         <tr>
+          <th>請求額合計</th>
+          <td>3200円</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <% end %>
 </div>
