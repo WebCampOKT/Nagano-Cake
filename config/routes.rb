@@ -23,14 +23,19 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-   resources :customers, only: [:update, :edit, :destroy ]
-     get 'customers/infomation/edit' => 'customers#edit'
-     get 'customers/my_page' => 'customers#show'
-     resources :items, only: [:index, :show]
-     resources :orders, only:[:new, :index, :show, :create]
-     post 'orders/confirm' => 'orders#confirm'
-     get 'orders/complete' => 'orders#complete'
-    resources :cart_items, only: [:show, :create, :update, :destroy]
+    resources :customers, only: [:update, :edit, :destroy ]
+    get 'customers/infomation/edit' => 'customers#edit'
+    get 'customers/my_page' => 'customers#show'
+    resources :items, only: [:index, :show]
+    resources :orders, only:[:new, :index, :show, :create]
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/complete' => 'orders#complete'
+    resources :cart_items, only: [:show, :create, :destroy] do
+      member do
+        patch 'increase'
+        patch 'decrease'
+      end
+    end
   end
 
   root to: 'public/homes#top'
