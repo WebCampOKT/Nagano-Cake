@@ -27,7 +27,7 @@
     </div>
     <div class="col-md-3">
       <div class="table_width">
-        <table>
+        <table class="table table-bordered">
          <tr>
            <th>送料</th>
             <% @order.shipping_cost = 800 %>
@@ -35,12 +35,15 @@
           </tr>
          <tr>
            <th>商品合計</th>
-           <td><%= total.to_i %></td>
+           <td>
+             <% total_price = (1200*2).to_i %>
+             <%= total_price.to_i %>
+            </td>
           </tr>
           <tr>
             <th>請求金額</th>
-            <% @order.total_payment = @order.postage + total.to_i %>
-            <td><%= @order.total_payment %></td>
+            <% @order.total_price = @order.shipping_cost + total_price.to_i %>
+            <td><%= @order.total_price %></td>
           </tr>
         </table>
       </div>
@@ -67,6 +70,16 @@
      </tr>
      <% total += (cart_item.item.price*cart_item.quantity) %> #アイテムごとに合計金額に加算
  <% end %>
+ </div>
+    <div class='col-3'>
+        <table class="table table-bordered border-dark">
+            <% @order.postage = 800 %>
+            <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
+            <tr><th class="table-secondary">商品合計</th><td><%= total.to_i %></td></tr>
+            <% @order.total_payment = @order.postage + total.to_i %>
+            <tr><th class="table-secondary">請求金額</th><td><%= @order.total_payment %></td></tr>
+        </table>
+    </div>
 <%
 =end %>
 
