@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払い金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2019/12/02</td>
+            <td>＊＊＊＊＊＊＊＊＊＊</td>
+            <td>ショートケーキ</td>
+            <td>2400円</td>
+            <td>入荷まち</td>
+            <td><%= link_to '注文詳細へ', new_order_path, class: 'btn btn-success' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<%
+=begin %> 現時点では実装できないのでコメントアウト
+<% @orders.each do |order| %>
+  <tr>
+    <td>
+      <%= link_to order_path(order.id) do %>
+        <%= order.created_at %>
+      <% end %>
+    </td>
+    <td><%= order.address %></td>
+    <td><%= order.item %></td>
+    <td><%= order.total_price %></td>
+    <td><%= order.status %></td>
+    <td><%= link_to '注文詳細へ', order_path(order.id), class: 'btn btn-success' %></td>
+  </tr>
+<% end %>
+<%
+=end %>
