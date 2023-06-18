@@ -1,0 +1,47 @@
+<div class="container">
+  <h4 class="my-4">配送先一覧・登録</h4>
+  <%= form_with model: @shipping_address do |f| %>
+    <div class="ml-5">
+      <div class="form-group row">
+        <%= f.label :postal_code, "郵便番号(ハイフンなし）", class: "col-3 col-form-label" %>
+        <%= f.text_field :postal_code, class: "col-3 form-control", placeholder: "0000000" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :address, "住所", class: "col-3 col-form-label" %>
+        <%= f.text_field :address, class: "col-7 form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :name, "宛名", class: "col-3 col-form-label" %>
+        <%= f.text_field :name, class: "col-3 form-control", placeholder: "令和道子" %>
+        <%= f.submit "新規登録", class: "btn btn-success px-4 py-2 ml-3" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shipping_addresses.each do |shipping_address| %>
+            <tr>
+              <td><%= shipping_address.postal_code %></td>
+              <td><%= shipping_address.address %></td>
+              <td><%= shipping_address.name %></td>
+              <td>
+                <%= link_to '編集', edit_shipping_address_path(shipping_address), class: 'btn btn-success' %>
+                <%= link_to '削除', shipping_address, method: :delte, class: 'btn btn-danger', data: { confirm: '本当に消しますか？' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

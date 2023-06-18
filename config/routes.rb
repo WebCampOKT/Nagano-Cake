@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         patch 'decrease'
       end
     end
+    resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
   end
 
   root to: 'public/homes#top'
