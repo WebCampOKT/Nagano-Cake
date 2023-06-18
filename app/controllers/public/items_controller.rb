@@ -1,13 +1,12 @@
 class Public::ItemsController < ApplicationController
-  # before_action :authenticate_customer!
-  
+  # before_action :authenticate_customer!, only: [:show, :index]
+
   def index
     @items = Item.all
   end
 
   def show
-    tax = 1.1
     @item = Item.find(params[:id])
-    @in_tax = (@item.price * tax).to_i
+    @cart_item = CartItem.new
   end
 end
