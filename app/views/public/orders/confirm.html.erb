@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <h4 class="my-5 ml-5">注文情報確認</h4>
+      <div class="table_width">
+        <table class="table table-bordered">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+          <tr>
+            <td>
+              <p>商品画像</p>
+              <p>ショートケーキ</p>
+            </td>
+            <td><p>1200</p></td>
+            <td><p>2</p></td>
+            <td>
+              <% subtotal = (1200*2).to_i %>
+              <%= subtotal %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="table_width">
+        <table>
+         <tr>
+           <th>送料</th>
+            <% @order.shipping_cost = 800 %>
+           <td><%= @order.shipping_cost %></td>
+          </tr>
+         <tr>
+           <th>商品合計</th>
+           <td><%= total.to_i %></td>
+          </tr>
+          <tr>
+            <th>請求金額</th>
+            <% @order.total_payment = @order.postage + total.to_i %>
+            <td><%= @order.total_payment %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%
+=begin %>
+現時点では実装できないのでコメントアウト
+<% total = 0 %> #合計金額total初期化
+  <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td>
+        <%= image_tag @item.get_image(60,40) %>
+        <%= cart_item.item.name %>
+      </td>
+      <td><%= (cart_item.item.price).to_i %></td>
+      <td><%= cart_item.quantity %></td>
+      <td>
+         <% subtotal = ((cart_item.item.price*cart_item.quantity)).to_i %> <!--小計の計算-->
+         <%= subtotal %>#小計を表示
+       </td>
+     </tr>
+     <% total += (cart_item.item.price*cart_item.quantity) %> #アイテムごとに合計金額に加算
+ <% end %>
+<%
+=end %>
+

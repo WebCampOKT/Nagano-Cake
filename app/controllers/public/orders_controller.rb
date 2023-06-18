@@ -16,14 +16,13 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    #[:address_option]=="0"のデータ(customerの住所)を呼び出す
+
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
       ship = Address.find(params[:order][:customer_id])
-　　　　#orderのmember_id(=カラム)でアドレス(帳)を選び、そのデータ送る
       @order.postal_code = ship.postal_code
       @order.address = ship.address
       @order.name = ship.name
@@ -45,6 +44,7 @@ class Public::OrdersController < ApplicationController
   end
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private
