@@ -5,6 +5,9 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  validates :name, presence: true
+  validates :caption, presence: true
+  validates :genre, presence: true
   validates :price, presence: true
 
   def get_image(width, height)
