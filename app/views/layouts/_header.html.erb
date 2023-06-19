@@ -7,29 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          <% if customer_signed_in? %>
-            <p>ようこそ、<%= current_customer.last_name %>さん！</p>
-            <li>
-              <%= link_to customers_my_page_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">マイページ</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to items_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">商品一覧</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to about_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">カート</span>
-              <% end %>
-            </li>
-            <li>
-               <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
-                 <span class="btn btn-light">ログアウト</span>
-               <% end %>
-            </li>
-          <% elsif admin_signed_in? %>
+          <% if admin_signed_in? %>
             <li>
               <%= link_to admin_items_path, class: 'nav-link text-light' do %>
                 <span class="btn btn-light">商品一覧</span>
@@ -54,6 +32,28 @@
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
                 <span class="btn btn-light">ログアウト</span>
               <% end %>
+            </li>
+          <% elsif customer_signed_in? %>
+            <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+            <li>
+              <%= link_to customers_my_page_path, class: 'nav-link text-light' do %>
+                <span class="btn btn-light">マイページ</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to items_path, class: 'nav-link text-light' do %>
+                <span class="btn btn-light">商品一覧</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to about_path, class: 'nav-link text-light' do %>
+                <span class="btn btn-light">カート</span>
+              <% end %>
+            </li>
+            <li>
+               <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
+                 <span class="btn btn-light">ログアウト</span>
+               <% end %>
             </li>
           <% else %>
             <li>
