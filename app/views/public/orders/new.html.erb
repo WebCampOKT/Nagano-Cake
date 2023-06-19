@@ -3,10 +3,10 @@
   <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
     <h5>支払い方法</h5>
       <p class="ml-5">
-        <%= f.radio_button :payment,:クレジットカード,checked: "checked" %>
+        <%= f.radio_button :payment, "credit_card", checked: "checked" %>
         <%= f.label :payment, "クレジットカード" %>
        <br>
-        <%= f.radio_button :payment, :銀行振込 %>
+        <%= f.radio_button :payment, "transfer" %>
         <%= f.label :payment, "銀行振込" %>
       </p>
 
