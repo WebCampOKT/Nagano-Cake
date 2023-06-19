@@ -14,7 +14,7 @@ class Public::CustomersController < ApplicationController
     def update
         @customer = current_customer
         @customer.update(customer_params)
-        redirect_to customers_my_page_path
+        redirect_to customers_my_page_path,notice: "You have updated customer successfully."
     end
 
     # 顧客の退会確認画面
