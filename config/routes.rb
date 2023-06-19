@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:update, :edit, :destroy ]
     get 'customers/infomation/edit' => 'customers#edit'
     get 'customers/my_page' => 'customers#show'
+    # 顧客の退会確認画面
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    # 退会処理用のルーティング
+    patch 'customers/withdrawal' => 'customers#withdrawel'
     resources :items, only: [:index, :show]
     resources :orders, only:[:new, :index, :show, :create]
     post 'orders/confirm' => 'orders#confirm'
