@@ -8,10 +8,10 @@ class Public::ShippingAddressesController < ApplicationController
 
   def create
     @shipping_address = ShippingAddress.new(shipping_address_params)
+    @shipping_address.customer_id = current_customer.id
     if @shipping_address.save
       redirect_to shipping_addresses_path
     else
-      @shipping_address = ShippingAddress.new
       @shipping_addresses = ShippingAddress.all
       render :index
     end
