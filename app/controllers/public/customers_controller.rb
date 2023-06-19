@@ -24,8 +24,8 @@ class Public::CustomersController < ApplicationController
     # 顧客の退会処理（ステータスの更新）
     def withdrawal
         @customer = Customer.find(current_customer.id)
-        # is_action(会員ステータス)をtrueに更新する
-        @customer.update(is_active: true)
+        # is_action(会員ステータス)をfalseに更新する
+        @customer.update(is_active: false)
         reset_session
         flash[:notice] = "退会処理をしました"
         redirect_to root_path
