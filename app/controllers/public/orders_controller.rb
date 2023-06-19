@@ -1,6 +1,5 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  #before_action :full_addresses
   def new
     @order = Order.new
     @addresses = current_customer.shipping_addresses.all
@@ -61,11 +60,6 @@ class Public::OrdersController < ApplicationController
   end
 
   private
-
-  #def full_addresses
-    #current_customer.shipping_addresses.postal_code + current_customer.shipping_addresses.address + current_customer.shipping_addresses.name
-  #end
-
   def order_params
     params.require(:order).permit(:payment, :postal_code, :address, :name, :status, :total_price, :customer_id, :shipping_cost)
   end
