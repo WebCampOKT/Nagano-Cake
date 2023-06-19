@@ -25,7 +25,7 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
+
   protected
   # 退会しているかの確認
   def customer_state
@@ -34,7 +34,7 @@ class Public::SessionsController < Devise::SessionsController
     # アカウントを取得できなかった場合、メソッドを終了
     return if !@customer
     # 取得できた場合、パスワードを照合し退会済みであれば新規登録画面へ遷移
-    if @customer.valid_password?(params[:customer][:password]) 
+    if @customer.valid_password?(params[:customer][:password])
        if @customer.is_active == true
           flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
           redirect_to new_customer_registration_path
