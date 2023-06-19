@@ -16,7 +16,7 @@ class Order < ApplicationRecord
   def total_price
     self.total.to_i + self.const_shipping_cost.to_i
   end
-  
+
   def full_addresses
     current_customer.shipping_addresses.postal_code + current_customer.shipping_addresses.address + current_customer.shipping_addresses.name
   end
