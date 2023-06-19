@@ -19,7 +19,7 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       redirect_to admin_item_path(@item)
     else
-      redirect_to new_admin_item_path
+      redirect_to new_admin_item
     end
   end
 

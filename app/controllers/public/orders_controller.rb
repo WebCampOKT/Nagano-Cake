@@ -2,7 +2,8 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
     @order = Order.new
-    @addresses = current_customer.shipping_addresses.all
+    # @addresses = current_customer.shipping_addresses.all
+    @addresses = current_customer.shipping_addresses.all.map {|shipping_address| ['〒' + shipping_address.postal_code + '　' + shipping_address.address + '　' + shipping_address.name, shipping_address.id] }.unshift(["--選択してください--", nil])
   end
 
   def create
