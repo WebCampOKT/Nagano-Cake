@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  # before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def index
     @cart_items = current_customer.cart_items.all
@@ -13,7 +13,7 @@ class Public::CartItemsController < ApplicationController
       cart_item.save
       redirect_to cart_items_path
     elsif @cart_item.save
-    　redirect_to cart_items_path
+      redirect_to cart_items_path
     else
       render 'index'
     end
@@ -24,6 +24,12 @@ class Public::CartItemsController < ApplicationController
     @cart_item.update(cart_item_params)
     @cart_items = current_customer.cart_items.all
     render 'index'
+  end
+
+  def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path
   end
 
   private

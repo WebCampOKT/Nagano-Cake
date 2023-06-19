@@ -3,37 +3,37 @@
     <div class="col-12 mx-auto">
       <h4 class="mt-5"><span style="background: #FFEBD2;">ショッピングカート</span></h1>
       <div class="col-12">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>商品名</th>
-              <th>単価（税込）</th>
-              <th>数量</th>
-              <th>小計</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% if current_customer.cart_items.present? %>
-              <% @cart_items.each do |cart_item| %>
+        <% if current_customer.cart_items.present? %>
+          <table class="table">
+            <thead>
               <tr>
-                <td><%= image_tag cart_item.item.get_image(60,60), class: "mr-4" %><%= cart_item.item.name %></td>
-                <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
-                <td>
-                  <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
-                    <%= f.number_field :quantity, min: 1, max:10 %>
-                    <%= f.submit "変更",class: "btn btn-success" %>
-                  <% end %>
-                </td>
-                <td><%= cart_item.subtotal.to_s(:delimited) %></td>
-                <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+                <th>商品名</th>
+                <th>単価（税込）</th>
+                <th>数量</th>
+                <th>小計</th>
+                <th></th>
               </tr>
+            </thead>
+            <tbody>
+              <% @cart_items.each do |cart_item| %>
+                <tr>
+                  <td><%= image_tag cart_item.item.get_image(60,60), class: "mr-4" %><%= cart_item.item.name %></td>
+                  <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+                  <td>
+                    <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+                      <%= f.number_field :quantity, min: 1, max:10 %>
+                      <%= f.submit "変更",class: "btn btn-success" %>
+                    <% end %>
+                  </td>
+                  <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+                  <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+                </tr>
               <% end %>
-            <% else %>
-              カートに商品がありません。
-            <% end %>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        <% else %>
+          カートに商品がありません。
+        <% end %>
       </div>
     </div>
   </div>
