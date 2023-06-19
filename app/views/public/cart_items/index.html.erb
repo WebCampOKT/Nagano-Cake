@@ -22,6 +22,7 @@
           </tr>
         </thead>
         <tbody>
+          <% @total = 0 %>
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= image_tag cart_item.item.get_image(60,60), class: "mr-4" %><%= cart_item.item.name %></td>
@@ -32,7 +33,10 @@
                   <%= f.submit "変更",class: "btn btn-success" %>
                 <% end %>
               </td>
-              <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+              <td>
+                <%= cart_item.subtotal.to_s(:delimited) %>
+                <% @total += cart_item.subtotal.to_i %>
+              </td>
               <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
             </tr>
           <% end %>
