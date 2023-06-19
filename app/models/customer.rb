@@ -4,6 +4,12 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # 退会してなければtrueを返す
+  def active_for_authetication?
+    super && (is_active == false)
+  end
+
+
   has_many :cart_items, dependent: :destroy
   has_many :shipping_addresses, dependent: :destroy 
   has_many :orders, dependent: :destroy
