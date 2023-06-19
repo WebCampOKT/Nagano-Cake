@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
-    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+      collection do
+        delete "clear"
+      end
+    end
   end
 
   root to: 'public/homes#top'
