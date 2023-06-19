@@ -1,28 +1,28 @@
 <div class="container">
   <h4 class="my-4">注文履歴詳細</h4>
-  <%= form_with model: @order, method: :patch do |f| %>
+  <%= form_with model: [@order, @order_detail], method: :patch do |f| %>
   <div class="row">
     <div class='col-11 offset-1'>
       <table class="table table-borderless">
         <tr>
           <th class="col-2">購入者</th>
-          <td class="col-9">山田　太郎</td>
+          <td class="col-9"><%= @order.customer.last_name %>　<%= @order.customer.first_name %></td>
         </tr>
        <tr>
           <th class="col-2">注文日</th>
-          <td class="col-9">2019/12/02</td>
+          <td class="col-9"><%= @order.created_at %></td>
         </tr>
         <tr>
           <th class="col-2">配送先</th>
-          <td class="col-9">**********</td>
+          <td class="col-9"><%= @order.address %></td>
         </tr>
         <tr>
           <th class="col-2">支払い方法</th>
-          <td class="col-9">銀行振込</td>
+          <td class="col-9"><%= @order.payment %></td>
         </tr>
         <tr>
           <th class="col-2">注文ステータス</th>
-          <td class="col-9"><%= f.select :status, [['入金待ち', 0], ['入金確認', 1], ['制作中', 2], ['発送準備中', 3], ['発送済み', 4]] %></td>
+          <td class="col-9"><%= f.select :status, Order.statuses.keys.map{ |k| [t("enum.order.status.#{k}", k]} %></td>
         </tr>
       </table>
     </div>
@@ -42,14 +42,16 @@
         </thead>
         <tbody>
           <tr>
-            <td>ショートケーキ</td>
-            <td>1200</td>
-            <td>2</td>
-            <td>2400</td>
-            <td>
-              <%= f.select :status, [['着手不可', 0], ['制作待ち', 1], ['制作中', 2], ['制作完了', 3]] %>
-            </td>
-            <td><%= link_to '更新', new_order_path, class: 'btn btn-success' %></td>
+            <% @order_details.each do |order_detail| %>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
+              <td><%= order_detail.quantity %></td>
+              <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+              <td>
+                <%= f.select :product_status, OrderDetail.product_statuses.keys.map{ |k| [t("enum.order_details.product_status.#{k}", k]} %>
+              </td>
+              <td><%= link_to '更新', admin_order_path(@order), class: 'btn btn-success' %></td>
+            <% end %>
           </tr>
         </tbody>
       </table>
@@ -57,16 +59,16 @@
     <div class='col-md-3 offset-md-1'>
       <table class="table table-borderless">
         <tr>
-          <th>商品合計</th>
-          <td>2400円</td>
+          <th><strong>商品合計</strong></th>
+          <td><%= @order.total.to_s(:delimted) %>円</td>
         </tr>
         <tr>
-          <th>送料</th>
-          <td>800円</td>
+          <th><strong>送料</strong></th>
+          <td><%= @order.const_shipping_cost %>円</td>
         </tr>
          <tr>
-          <th>請求額合計</th>
-          <td>3200円</td>
+          <th><strong>請求額合計</strong></th>
+          <td><%= @order.total_price.to_s(:delimted) %>円</td>
         </tr>
       </table>
     </div>
