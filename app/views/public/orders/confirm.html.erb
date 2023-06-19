@@ -10,17 +10,22 @@
             <th>数量</th>
             <th>小計</th>
           </tr>
-          <tr>
-            <td>
-              商品画像: ショートケーキ
-            </td>
-            <td>1200</td>
-            <td>2</td>
-            <td>
-              <% subtotal = (1200*2).to_i %>
-              <%= subtotal %>
-            </td>
-          </tr>
+          <% total = 0 %>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.get_image(60,60), class: "mr-4" %>
+                <%= cart_item.item.name %>
+              </td>
+              <td><%= (cart_item.item.price*1.1).to_i %></td>
+              <td><%= cart_item.quantity %></td>
+              <td>
+                 <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.1).to_i %> <!--小計の計算-->
+                 <%= subtotal %>
+               </td>
+             </tr>
+             <% total += (cart_item.item.price*cart_item.quantity)*1.1 %>
+          <% end %>
         </table>
       </div>
     </div>
@@ -35,7 +40,6 @@
            <tr>
              <th>商品合計</th>
              <td>
-               <% total = (1200*2).to_i %>
                <%= total.to_i %>
               </td>
             </tr>
@@ -63,7 +67,7 @@
   <div class="row justify-content-center">
     <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :customer_id %>
-        <%= f.hidden_field :postage %>
+        <%= f.hidden_field :shipping_cost %>
         <%= f.hidden_field :total_price %>
         <%= f.hidden_field :payment %>
         <%= f.hidden_field :name %>
@@ -75,35 +79,5 @@
   </div>
 </div>
 
-<%
-=begin %>
-現時点では実装できないのでコメントアウト
-<% total = 0 %> #合計金額total初期化
-  <% @cart_items.each do |cart_item| %>
-    <tr>
-      <td>
-        <%= image_tag @item.get_image(60,40) %>
-        <%= cart_item.item.name %>
-      </td>
-      <td><%= (cart_item.item.price).to_i %></td>
-      <td><%= cart_item.quantity %></td>
-      <td>
-         <% subtotal = ((cart_item.item.price*cart_item.quantity)).to_i %> <!--小計の計算-->
-         <%= subtotal %>#小計を表示
-       </td>
-     </tr>
-     <% total += (cart_item.item.price*cart_item.quantity) %> #アイテムごとに合計金額に加算
- <% end %>
- </div>
-    <div class='col-3'>
-        <table class="table table-bordered border-dark">
-            <% @order.postage = 800 %>
-            <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
-            <tr><th class="table-secondary">商品合計</th><td><%= total.to_i %></td></tr>
-            <% @order.total_payment = @order.postage + total.to_i %>
-            <tr><th class="table-secondary">請求金額</th><td><%= @order.total_payment %></td></tr>
-        </table>
-    </div>
-<%
-=end %>
+
 
