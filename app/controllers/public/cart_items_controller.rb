@@ -15,9 +15,10 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     elsif @cart_item.save
       @cart_items = current_customer.cart_items.all
+      @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
       render 'index'
     else
-      render 'index'
+      redirect_back(fallback_location: root_path)
     end
   end
 
