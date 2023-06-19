@@ -34,8 +34,7 @@
           <table class="table table-bordered">
            <tr>
              <th>送料</th>
-              <% @order.shipping_cost = 800 %>
-             <td><%= @order.shipping_cost %></td>
+             <td><%= @order.const_shipping_cost %></td>
             </tr>
            <tr>
              <th>商品合計</th>
@@ -45,7 +44,7 @@
             </tr>
             <tr>
               <th>請求金額</th>
-              <% @order.total_price = @order.shipping_cost + total.to_i %>
+              <% @order.total_price = @order.const_shipping_cost + total.to_i %>
               <td><%= @order.total_price %></td>
             </tr>
           </table>
