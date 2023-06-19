@@ -30,12 +30,8 @@ Rails.application.routes.draw do
     resources :orders, only:[:new, :index, :show, :create]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
-    resources :cart_items, only: [:show, :create, :destroy] do
-      member do
-        patch 'increase'
-        patch 'decrease'
-      end
-    end
+    resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
   end
 
   root to: 'public/homes#top'
