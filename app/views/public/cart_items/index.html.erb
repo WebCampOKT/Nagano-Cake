@@ -26,7 +26,7 @@
                   <% end %>
                 </td>
                 <td><%= cart_item.subtotal.to_s(:delimited) %></td>
-                <td></td>
+                <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
               </tr>
               <% end %>
             <% else %>
