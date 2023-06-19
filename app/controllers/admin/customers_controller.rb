@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
   
+  
   # 会員一覧
   def index
     @customers = Customer.all
