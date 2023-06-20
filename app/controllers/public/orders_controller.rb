@@ -25,8 +25,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @tax = 1.1
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.payment = params[:order][:payment]
 
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
@@ -48,7 +51,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-    @order = Order.find(params[:id])
   end
 
   def index
