@@ -17,62 +17,62 @@
                 <%= image_tag cart_item.item.get_image(60,60), class: "mr-4" %>
                 <%= cart_item.item.name %>
               </td>
-              <td><%= (cart_item.item.price*@tax).to_i %></td>
+              <td><%= (cart_item.item.price*@tax).floor.to_s(:delimited) %></td>
               <td><%= cart_item.quantity %></td>
               <td>
-                 <% subtotal = ((cart_item.item.price*cart_item.quantity)*@tax).to_i %> <!--小計の計算-->
+                 <% subtotal = ((cart_item.item.price*cart_item.quantity)*@tax).floor.to_s(:delimited) %> <!--小計の計算-->
                  <%= subtotal %>
                </td>
              </tr>
-             <% total += (cart_item.item.price*cart_item.quantity)*@tax %>
+             <% total += ((cart_item.item.price*cart_item.quantity)*@tax).floor %>
           <% end %>
         </table>
       </div>
     </div>
-    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-      <div class="col-md-3">
-        <div class="table_width">
-          <table class="table table-bordered">
-           <tr>
-             <th>送料</th>
-             <td>
-               <%= @order.const_shipping_cost %>
-               <%= f.hidden_field :shipping_cost, :value => @order.const_shipping_cost %>
-             </td>
-           </tr>
-           <tr>
-             <th>商品合計</th>
-             <td>
-               <%= total.to_i %>
-               <%= f.hidden_field :subtotal, :value => total %>
-              </td>
-            </tr>
-            <tr>
-              <th>請求金額</th>
-              <% @order.total_price = @order.const_shipping_cost + total.to_i %>
-              <td>
-                <%= @order.total_price %>
-                <%= f.hidden_field :total_price, :value => @order.total_price %>
-              </td>
-            </tr>
-          </table>
-        </div>
+    <div class="col-md-3">
+      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+      <div class="table_width">
+        <table class="table table-bordered">
+         <tr>
+           <th>送料</th>
+           <td>
+             <%= @order.const_shipping_cost %>
+             <%= f.hidden_field :shipping_cost %>
+           </td>
+         </tr>
+         <tr>
+           <th>商品合計</th>
+           <td>
+             <%= total.to_s(:delimited) %>
+             <%= f.hidden_field :subtotal %>
+            </td>
+          </tr>
+          <tr>
+            <th>請求金額</th>
+            <% @order.total_price = @order.const_shipping_cost + total %>
+            <td>
+              <%= @order.total_price.to_s(:delimited) %>
+              <%= f.hidden_field :total_price %>
+            </td>
+          </tr>
+        </table>
       </div>
+    </div>
   </div>
   <div class="row">
     <div class='col-11 offset-1'>
         <table class="table table-borderless">
             <tr><th class="col-2">支払い方法</th><td class="col-10">
               <%= @order.payment %>
-              <%= f.hidden_field :payment, :value => @order.payment %>
+              <%= f.hidden_field :payment %>
               </td></tr>
             <tr><th class="col-2">お届け先</th><td class="col-10">
             〒<%= @order.postal_code %>
             <%= f.hidden_field :postal_code %>
             <%= @order.address %>
-            <%= f.hidden_field :address, :value => @order.address %>
+            <%= f.hidden_field :address %>
             <%= @order.name %>
-            <%= f.hidden_field :name, :value => @order.name %>
+            <%= f.hidden_field :name %>
             </td></tr>
         </table>
       </div>

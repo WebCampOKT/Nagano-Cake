@@ -29,7 +29,6 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.payment = params[:order][:payment]
 
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
@@ -54,11 +53,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all.page(params[:page]).per(6).order('created_at DESC')
   end
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    @tax = 1.1
   end
 
   private

@@ -15,16 +15,16 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
+              <td><%= l order.created_at %></td>
+              <td><%= order.address %></td>
               <td>
-                <%= link_to order_path(order.id) do %>
-                  <%= order.created_at %>
+                <% order.order_details.each do |order_detail| %>
+                  <%= order_detail.item.name %>
                 <% end %>
               </td>
-              <td><%= order.address %></td>
-              <td><%= order.customer_id %></td>
-              <td><%= order.total_price %></td>
+              <td><%= order.total_price.to_s(:delimited) %>円</td>
               <td><%= order.status %></td>
-              <td><%= link_to '注文詳細へ', order_path(order.id), class: 'btn btn-success' %></td>
+              <td><%= link_to '表示する', order_path(order.id), class: 'btn btn-primary' %></td>
             </tr>
           <% end %>
         </tbody>
