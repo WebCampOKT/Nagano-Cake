@@ -32,7 +32,12 @@
       </tr>
        <tr>
         <td class="col-md-2>">会員ステータス</td>
-        <td class="col-md-5"></td>
+        <td class="col-md-5">
+          <% if @customer.is_active == true %>
+            <p class="text-success">有効</p>
+          <% else %>
+            <p class="">無効</p>
+          <% end %></td>
       </tr>
       <tr>
         <td></td>
