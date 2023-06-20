@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-  # before_action :authenticate_customer!, only: [:show, :index]
+  before_action :authenticate_customer!, only: [:show, :index]
 
   def index
     @items = Item.all

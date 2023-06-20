@@ -1,16 +1,18 @@
 ja:
-  enums:
-    status:
-      payment_waiting: "入金待ち"
-      payment_confermation: "入金確認"
-      production: "製作中"
-      shipping_preparation: "発送準備中"
-      sent: "発送済み"
-    product_status:
-      impossible: "着手不可"
-      waiting: "製作待ち"
-      production: "製作中"
-      completion: "製作完了"
-    payment:
-      credit_card: "クレジットカード"
-      transfer: "銀行振込"
+ enums:
+  order:
+   status:
+    payment_waiting: "入金待ち"
+    payment_confermation: "入金確認"
+    production: "製作中"
+    shipping_preparation: "発送準備中"
+    sent: "発送済み"
+   payment:
+    credit_card: "クレジットカード"
+    transfer: "銀行振込"
+  order_detail:
+   product_status:
+    impossible: "着手不可"
+    waiting: "製作待ち"
+    production: "製作中"
+    completion: "製作完了"

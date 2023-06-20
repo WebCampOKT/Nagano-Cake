@@ -1,11 +1,15 @@
 class Item < ApplicationRecord
   has_many :cart_items
   has_many :order_details
+  has_many :orders, through: :ordered_details
   belongs_to :genre
   has_many :orders, through: :order_details
 
   has_one_attached :image
 
+  validates :name, presence: true
+  validates :caption, presence: true
+  validates :genre, presence: true
   validates :price, presence: true
 
   def get_image(width, height)

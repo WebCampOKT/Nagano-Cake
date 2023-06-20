@@ -1,6 +1,6 @@
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
   <h4 class="mb-5 mt-5"><span style="background: #FFEBD2;">会員情報編集</h4>
-  <%= form_with model: @customer do |f| %>
+  <%= form_with model: @customer,url:customers_infomation_path ,method: :patch do |f| %>
   <div class="row mb-4">
     <label class="col-lg-2">名前</label>
     <label class="col-lg-1">(姓)</label>
@@ -57,6 +57,9 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-4">
       <%= f.submit "編集内容を保存", class: 'btn btn-success w-75' %>
+    </div>
+    <div class="col-lg-4">
+      <%= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger w-75' %>
     </div>
   </div>
   <% end %>
