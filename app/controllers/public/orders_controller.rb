@@ -1,8 +1,8 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
-    @order = @customer.order.new
-    @addresses = @customer.shipping_addresses.all
+    @order = Order.new
+    @addresses = current_customer.shipping_addresses.all
   end
 
   def create
