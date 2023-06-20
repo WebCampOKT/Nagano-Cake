@@ -31,9 +31,9 @@ Rails.application.routes.draw do
     # 退会処理用のルーティング
     patch 'customers/withdrawal' => 'customers#withdrawel'
     resources :items, only: [:index, :show]
+    get 'orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :index, :show, :create]
     post 'orders/confirm' => 'orders#confirm'
-    get 'orders/complete' => 'orders#complete'
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
