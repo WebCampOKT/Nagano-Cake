@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
-    resources :customers, only: [:index, :edit, :update, :show]
+    resources :customers, only: [:index, :edit, :update, :show, :update]
     resources :orders, only: [:show, :update] do
       resource :order_detail, only: [:update]
     end
@@ -23,16 +23,16 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-    resources :customers, only: [:update, :edit, :destroy ]
-    get 'customers/infomation/edit' => 'customers#edit'
     get 'customers/my_page' => 'customers#show'
+    get 'customers/infomation/edit' => 'customers#edit'
+    patch  '/customers/infomation' => 'customers#update'
     # 顧客の退会確認画面
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     # 退会処理用のルーティング
+    patch 'customers/withdrawal' => 'customers#withdrawal'
+    resources :items, only: [:index, :show]
     get 'orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :index, :show, :create]
-    patch 'customers/withdrawal' => 'customers#withdrawel'
-    resources :items, only: [:index, :show]
     post 'orders/confirm' => 'orders#confirm'
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :cart_items, only: [:index, :create, :update, :destroy] do

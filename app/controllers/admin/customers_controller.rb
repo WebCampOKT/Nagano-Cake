@@ -20,11 +20,11 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
-    redirect_to admin_customer_path,notice: "You have updated customer successfully."
+    redirect_to admin_customer_path,notice: "会員情報を更新しました。"
   end
 
   private
     def customer_params
-      params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :phone_number)
+      params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :phone_number, :is_active)
     end
 end
