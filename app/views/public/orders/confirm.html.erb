@@ -17,11 +17,14 @@
                 <%= image_tag cart_item.item.get_image(60,60), class: "mr-4" %>
                 <%= cart_item.item.name %>
               </td>
-              <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+              <td><%= (cart_item.item.price*1.1).to_i %></td>
               <td><%= cart_item.quantity %></td>
-              <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+              <td>
+                 <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.1).to_i %> <!--小計の計算-->
+                 <%= subtotal %>
+               </td>
              </tr>
-             <% total += cart_item.subtotal %>
+             <% total += (cart_item.item.price*cart_item.quantity)*1.1 %>
           <% end %>
         </table>
       </div>
@@ -35,12 +38,14 @@
             </tr>
            <tr>
              <th>商品合計</th>
-             <td><%= total.to_s(:delimited) %></td>
+             <td>
+               <%= total.to_i %>
+              </td>
             </tr>
             <tr>
               <th>請求金額</th>
               <% @order.total_price = @order.const_shipping_cost + total.to_i %>
-              <td><%= @order.total_price.to_s(:delimited) %></td>
+              <td><%= @order.total_price %></td>
             </tr>
           </table>
         </div>
@@ -58,7 +63,7 @@
         </table>
       </div>
     </div>
-  <div class="row justify-content-center mb-5">
+  <div class="row justify-content-center">
     <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :customer_id %>
         <%= f.hidden_field :shipping_cost %>
