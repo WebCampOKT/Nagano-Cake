@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <h4 class="mb-5 ml-5"><span style="background: #FFEBD2;">会員一覧</span></h4>
 
-    <table class="table col-md-10">
+    <table class="table col-md-10 text-center">
       <thead>
         <tr>
           <th>会員ID</th>
@@ -25,7 +25,13 @@
           <td>
             <%= customer.email %>
           </td>
-          <td></td>
+          <td>
+            <% if customer.is_active == true %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="">無効</p>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
