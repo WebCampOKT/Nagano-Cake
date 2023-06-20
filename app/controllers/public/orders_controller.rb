@@ -1,8 +1,8 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
-    @order = @customer.order.new
-    @addresses = @customer.shipping_addresses.all
+    @order = Order.new
+    @addresses = current_customer.shipping_addresses.all
   end
 
   def create
@@ -24,17 +24,9 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details
-  end
-
   def confirm
-    @tax = 1.1
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.payment = params[:order][:payment]
 
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
@@ -56,10 +48,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    @order = Order.find(params[:id])
   end
 
   def index
     @orders = Order.all
+  end
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private
