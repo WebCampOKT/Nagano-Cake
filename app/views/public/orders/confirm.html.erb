@@ -64,7 +64,7 @@
       </div>
     </div>
   <div class="row justify-content-center">
-    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+    <%= form_with model: [@customer, @order], url: orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :customer_id %>
         <%= f.hidden_field :shipping_cost %>
         <%= f.hidden_field :total_price %>
