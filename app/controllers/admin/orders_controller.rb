@@ -6,7 +6,10 @@ class Admin::OrdersController < ApplicationController
 
   def status_update
     @order = Order.find(params[:order][:id])
-    @order.update(order_params)
+    if @order.update(params_int(order_params))
+      order_status_confermation?(@order)
+      redirect_back(fallback_location: )
+    end
   end
 
   def product_status_update
@@ -33,22 +36,26 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
-  def order_status_payment_waiting?(order)
-    if order.order_status_before_type_cast == 1
-      order.product_orders.each do |p|
-        p.update(product_order_status: 1)
+  def order_status_confermation?(order)
+    if order.status == 1
+      order.product_orders.each do |product_order|
+        product_order.update(product_status: 1)
       end
-      flash[:info] = "製作ステータスが「製作待ち」に更新されました"
     end
   end
 
-  def order_status_confermation?(order)
-  end
-
   def product_status_product_waiting?(order_detail)
+    if order_detail.product_status == 2
+      order_detail.order.update(status: 2)
+    end
   end
 
-  def product_status_compelition?(order_detail)
+  def product_status_compelition?(order)
+    if order.order_detalis.all? do |order_detail|
+      order_detail.product_status == 3
+    end
+      order.update(status: 3)
+    end
   end
 
 end
