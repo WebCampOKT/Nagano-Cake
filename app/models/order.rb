@@ -6,10 +6,10 @@ class Order < ApplicationRecord
   enum status: {payment_waiting: 0, payment_confermation: 1, production: 2, shipping_preparation: 3, sent: 4}
   enum payment: {credit_card: 0, transfer: 1}
 
-
-  #def total
-    #self.order_details.subtotal.sum
-  #end
+  
+  def total
+    order_details.inject(0) { |sum, order_detail| sum + order_detail.subtotal }
+  end
 
   def const_shipping_cost
     self.shipping_cost = 800
