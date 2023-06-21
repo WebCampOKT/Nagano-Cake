@@ -1,11 +1,11 @@
 class Admin::CustomersController < ApplicationController
-  
-  
+
+
   # 会員一覧
   def index
     @customers = Customer.all
   end
-  
+
   # 会員詳細画面
   def show
     @customer = Customer.find(params[:id])
