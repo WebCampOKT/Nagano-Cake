@@ -1,7 +1,8 @@
-<div class="container">
-  <h4 class="my-4">注文履歴詳細</h4>
+<div class="container mb-5">
+  <h4 class="my-4"><span style="background: #FFEBD2;">注文履歴詳細</span></h4>
   <div class="row">
     <div class="col-md-7">
+      <p><strong>注文情報</strong></p>
       <table class="table table-bordered">
         <tr>
           <th>注文日</th>
@@ -26,6 +27,7 @@
       </table>
     </div>
     <div class="col-md-3">
+      <p><strong>請求情報</strong></p>
       <table class="table table-bordered">
         <tr>
           <th>商品合計</th>
@@ -43,26 +45,24 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-8">
+      <p><strong>注文内容</strong></p>
       <table class="table table-bordered">
-        <thead>
+        <tr>
+          <th class="w-50">商品</th>
+          <th class="w-25">単価（税込)</th>
+          <th>個数</th>
+          <th>小計</th>
+        </tr>
+        <% @order_details.each do |order_details| %>
           <tr>
-            <th class="active col-xs-6">商品</th>
-            <th class="active">単価（税込）</th>
-            <th class="active">個数</th>
-            <th class="active">小計</th>
+            <td><%= order_details.item.name %></td>
+            <td><%= order_details.item.add_tax_price %></td>
+            <td><%= order_details.quantity %></td>
+            <!--ここsubtotalが使えない理由がわからない　何？-->
+            <td><%= order_details.item.add_tax_price * order_details.quantity %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @order_details.each do |order_detail| %>
-            <tr>
-              <td><%= order_detail.item.name %></td>
-              <td>¥<%= (order_detail.item.price * @tax).floor.to_s(:delimited) %></td>
-              <td><%= order_detail.quantity %></td>
-              <td>¥<%= (order_detail.item.price * order_detail.quantity * @tax).floor.to_s(:delimited) %></td>
-            </tr>
-          <% end %>
-        </tbody>
+        <% end %>
       </table>
     </div>
   </div>

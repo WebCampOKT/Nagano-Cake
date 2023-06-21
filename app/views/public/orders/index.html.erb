@@ -1,4 +1,5 @@
-<div class="container mt-5">
+<div class="container mb-5">
+  <h4 class="my-4"><span style="background: #FFEBD2;">注文履歴一覧</span></h4>
   <div class="row">
     <div class="col-md-12">
       <table class="table table-bordered">
@@ -15,20 +16,20 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td><%= l order.created_at %></td>
-              <td>
+              <td class="align-middle"><%= l order.created_at %></td>
+              <td class="align-middle">
                 〒<%= order.postal_code %>
                 <%= order.address %>
                 <%= order.name %>
               </td>
-              <td>
+              <td class="align-middle">
                 <% order.order_details.each do |order_detail| %>
                   <li style="list-style: none;"><%= order_detail.item.name %></li>
                 <% end %>
               </td>
-              <td><%= order.total_price.to_s(:delimited) %>円</td>
-              <td><%= order.status %></td>
-              <td><%= link_to '表示する', order_path(order.id), class: 'btn btn-primary' %></td>
+              <td class="align-middle"><%= order.total_price.to_s(:delimited) %>円</td>
+              <td class="align-middle"><%= order.status %></td>
+              <td class="align-middle"><%= link_to '表示する', order_path(order.id), class: 'btn btn-primary' %></td>
             </tr>
           <% end %>
         </tbody>
