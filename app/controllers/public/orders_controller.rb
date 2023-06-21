@@ -27,6 +27,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @tax = 1.1
     @cart_items = current_customer.cart_items.all
+    @addresses = current_customer.shipping_addresses.all
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.payment = params[:order][:payment]
@@ -41,9 +42,11 @@ class Public::OrdersController < ApplicationController
       @order.address = ship.address
       @order.name = ship.name
     elsif params[:order][:address_option] = "2"
-      @order.postal_code = params[:order][:postal_code]
-      @order.address = params[:order][:address]
-      @order.name = params[:order][:name]
+      address_new = current_customer.shipping_addresses.new(address_params)
+      if address_new.save
+      else
+        render 'new'
+      end
     else
       render 'new'
     end
@@ -54,7 +57,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.all.order(created_at: :DESC)
   end
   def show
     @order = Order.find(params[:id])
@@ -64,5 +67,8 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:payment, :postal_code, :address, :name, :status, :total_price, :customer_id, :shipping_cost)
+  end
+  def address_params
+    params.require(:order).permit(:name, :address, :postal_code)
   end
 end
