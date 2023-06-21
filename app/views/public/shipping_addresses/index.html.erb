@@ -34,8 +34,8 @@
               <td><%= shipping_address.postal_code %></td>
               <td><%= shipping_address.address %></td>
               <td><%= shipping_address.name %></td>
-              <td class="justify-content-cente">
-                <%= link_to '編集', edit_shipping_address_path(shipping_address), class: 'btn btn-success' %>
+              <td style="text-align: center;">
+                <%= link_to '編集', edit_shipping_address_path(shipping_address), class: 'mr-3 btn btn-success' %>
                 <%= link_to '削除', shipping_address, method: :delete, class: 'btn btn-danger', data: { confirm: '本当に消しますか？' } %>
               </td>
             </tr>
