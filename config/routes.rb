@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :customers, only: [:index, :edit, :update, :show, :update]
     resources :orders, only: [:show, :update] do
-      resource :order_detail, only: [:update]
+      resources :order_details, only: [:update]
     end
   end
   namespace :public do
