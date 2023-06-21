@@ -1,11 +1,11 @@
 class Admin::CustomersController < ApplicationController
-  
-  
+
+
   # 会員一覧
   def index
     @customers = Customer.all
   end
-  
+
   # 会員詳細画面
   def show
     @customer = Customer.find(params[:id])
@@ -19,8 +19,11 @@ class Admin::CustomersController < ApplicationController
   # 会員情報更新
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to admin_customer_path,notice: "会員情報を更新しました。"
+    if @customer.update(customer_params)
+      redirect_to admin_customer_path,notice: "会員情報を更新しました。"
+    else
+      render 'edit'
+    end
   end
 
   private

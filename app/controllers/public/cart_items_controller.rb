@@ -18,6 +18,7 @@ class Public::CartItemsController < ApplicationController
       @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
       render 'index'
     else
+      flash[:notice] = "個数を選択してください"
       redirect_back(fallback_location: root_path)
     end
   end

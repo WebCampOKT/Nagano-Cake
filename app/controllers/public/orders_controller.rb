@@ -41,9 +41,10 @@ class Public::OrdersController < ApplicationController
       @order.address = ship.address
       @order.name = ship.name
     elsif params[:order][:address_option] = "2"
-      address_new = current_customer.shipping_addresses.new(address_params)
-      if address_new.save
+      @address_new = current_customer.shipping_addresses.new(address_params)
+      if @address_new.save
       else
+        flash[:notice] = "配送先を入力してください"
         render 'new'
       end
     else
