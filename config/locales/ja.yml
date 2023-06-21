@@ -1,4 +1,7 @@
 ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
   enums:
     order:
       status:
@@ -16,9 +19,6 @@ ja:
         waiting: "製作待ち"
         production: "製作中"
         completion: "製作完了"
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M:%S"
   activerecord:
     models:
       item: "商品"

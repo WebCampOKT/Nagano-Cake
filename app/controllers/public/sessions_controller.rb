@@ -38,7 +38,7 @@ class Public::SessionsController < Devise::SessionsController
        if @customer.is_active == false
           flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
           redirect_to new_customer_registration_path
-      　# 有効であればメソッドを
+      　# 有効であればメソッドを終了
        return elsif @customer.is_active == true
        end
     end
