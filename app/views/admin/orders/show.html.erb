@@ -1,35 +1,36 @@
 <div class="container">
   <h4 class="my-4">注文履歴詳細</h4>
-  <%= form_with model: @order, method: :patch do |f| %>
-  <div class="row">
-    <div class='col-11 offset-1'>
-      <table class="table table-borderless">
-        <tr>
-          <th class="col-2">購入者</th>
-          <td class="col-9"><%= @order.customer.last_name %>　<%= @order.customer.first_name %></td>
-        </tr>
-       <tr>
-          <th class="col-2">注文日</th>
-          <td class="col-9"><%= l @order.created_at %></td>
-        </tr>
-        <tr>
-          <th class="col-2">配送先</th>
-          <td class="col-9"><%= @order.address %></td>
-        </tr>
-        <tr>
-          <th class="col-2">支払い方法</th>
-          <td class="col-9"><%= @order.payment_i18n %></td>
-        </tr>
-        <tr>
-          <th class="col-2">注文ステータス</th>
-          <td class="col-9">
-            <%= f.select :status, Order.statuses.keys.map{ |k| [I18n.t("enums.order.status.#{k}"), k]} %>
-            <span><%= link_to '更新', admin_order_path(@order), class: 'btn btn-success' %></span>
-          </td>
-        </tr>
-      </table>
+  <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
+    <div class="row">
+      <div class='col-11 offset-1'>
+        <table class="table table-borderless">
+          <tr>
+            <th class="col-2">購入者</th>
+            <td class="col-9"><%= @order.customer.last_name %>　<%= @order.customer.first_name %></td>
+          </tr>
+         <tr>
+            <th class="col-2">注文日</th>
+            <td class="col-9"><%= @order.created_at %></td>
+          </tr>
+          <tr>
+            <th class="col-2">配送先</th>
+            <td class="col-9"><%= @order.address %></td>
+          </tr>
+          <tr>
+            <th class="col-2">支払い方法</th>
+            <td class="col-9"><%= @order.payment_i18n %></td>
+          </tr>
+          <tr>
+            <th class="col-2">注文ステータス</th>
+            <td class="col-9">
+              <%= f.select :status, Order.statuses.keys.map{ |k| [I18n.t("enums.order.status.#{k}"), k]} %>
+              <span><%= f.submit '更新', class: 'btn btn-success' %></span>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="row">
     <div class="col-md-8">
       <table class="table table-bordered">
@@ -45,16 +46,18 @@
         </thead>
         <tbody>
           <% @order_details.each do |order_detail| %>
-          <tr>
-            <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
-            <td><%= order_detail.quantity %></td>
-            <td><%= order_detail.subtotal.to_s(:delimited) %></td>
-            <td>
-              <%= f.select :product_status, OrderDetail.product_statuses.keys.map{ |k| [I18n.t("enums.order_detail.product_status.#{k}"), k]} %>
-            </td>
-            <td><%= link_to '更新', admin_order_path(@order), class: 'btn btn-success' %></td>
-          </tr>
+            <%= form_with model: [@order, order_detail], url: admin_order_order_detail_path(@order, order_detail), method: :patch do |f| %>
+              <tr>
+                <td><%= order_detail.item.name %></td>
+                <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
+                <td><%= order_detail.quantity %></td>
+                <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+                <td>
+                  <%= f.select :product_status, OrderDetail.product_statuses.keys.map{ |k| [I18n.t("enums.order_detail.product_status.#{k}"), k]} %>
+                </td>
+                <td><%= f.submit '更新', class: 'btn btn-success' %></td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
@@ -76,6 +79,4 @@
       </table>
     </div>
   </div>
-  <% end %>
 </div>
-

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get 'orders' => 'orders#index'
     end
     resources :orders, only: [:show, :update] do
-      resource :order_detail, only: [:update]
+      resources :order_details, only: [:update]
     end
   end
   namespace :public do
