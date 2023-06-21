@@ -3,7 +3,7 @@ class Public::ShippingAddressesController < ApplicationController
   before_action :find_shipping_address, only: [:edit, :update, :destroy]
   def index
     @shipping_address = ShippingAddress.new
-    @shipping_addresses = ShippingAddress.all
+    @shipping_addresses = current_customer.shipping_addresses.all
   end
 
   def create
