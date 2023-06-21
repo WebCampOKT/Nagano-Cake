@@ -1,5 +1,5 @@
-<div class="container">
-  <h4 class="my-5 ml-5">注文情報確認</h4>
+<div class="container mb-5">
+  <h4 class="my-5 ml-5"><span style="background: #FFEBD2;">注文情報確認</span></h4>
   <div class="row">
     <div class="col-md-9">
       <div class="table_width">
@@ -62,7 +62,7 @@
     <div class='col-11 offset-1'>
         <table class="table table-borderless">
             <tr><th class="col-2">支払い方法</th><td class="col-10">
-              <%= @order.payment %>
+              <%= @order.payment_i18n %>
               <%= f.hidden_field :payment %>
               </td></tr>
             <tr><th class="col-2">お届け先</th><td class="col-10">
