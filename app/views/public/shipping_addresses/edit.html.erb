@@ -1,5 +1,6 @@
 <div class="container">
   <h4 class="my-4">配送先編集</h4>
+  <%= render 'layouts/errors', obj: @shipping_address %>
   <%= form_with model: @shipping_address, url: shipping_address_path(@shipping_address), method: :patch do |f| %>
     <div class="ml-5">
       <div class="form-group row">

@@ -27,9 +27,9 @@ class Public::OrdersController < ApplicationController
   def confirm
     @tax = 1.1
     @cart_items = current_customer.cart_items.all
-    @addresses = current_customer.shipping_addresses.all
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @order.payment = params[:order][:payment]
 
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
@@ -41,9 +41,10 @@ class Public::OrdersController < ApplicationController
       @order.address = ship.address
       @order.name = ship.name
     elsif params[:order][:address_option] = "2"
-      address_new = current_customer.shipping_addresses.new(address_params)
-      if address_new.save
+      @address_new = current_customer.shipping_addresses.new(address_params)
+      if @address_new.save
       else
+        flash[:notice] = "配送先を入力してください"
         render 'new'
       end
     else
@@ -56,19 +57,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.all#.page(params[:page]).per(6).order('created_at DESC')
+    @orders = Order.all
   end
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    @tax = 1.1
   end
 
   private
   def order_params
     params.require(:order).permit(:payment, :postal_code, :address, :name, :status, :total_price, :customer_id, :shipping_cost)
-  end
-  def address_params
-    params.require(:order).permit(:name, :address, :postal_code)
   end
 end

@@ -1,5 +1,5 @@
 class Public::ShippingAddressesController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_customer!
   before_action :find_shipping_address, only: [:edit, :update, :destroy]
   def index
     @shipping_address = ShippingAddress.new
