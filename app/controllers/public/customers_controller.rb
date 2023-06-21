@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-    
+
     # 顧客のマイページ
     def show
         @customer = current_customer
@@ -12,9 +12,12 @@ class Public::CustomersController < ApplicationController
 
     # 顧客の登録情報更新
     def update
-        @customer = current_customer
-        @customer.update(customer_params)
+      @customer = current_customer
+      if @customer.update(customer_params)
         redirect_to customers_my_page_path,notice: "会員情報を更新しました"
+      else
+        render 'edit'
+      end
     end
 
     # 顧客の退会確認画面

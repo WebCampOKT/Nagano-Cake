@@ -3,6 +3,9 @@
     <div class="w-75 mx-auto">
       <h4 class="mt-5"><span style="background: #FFEBD2;">商品新規登録</span></h4>
       <div class="col w-75 mx-auto">
+        <div>
+        <%= render 'layouts/errors', obj: @item %>
+        </div>
         <%= render 'form', item: @item, genres: @genres %>
       </div>
     </div>

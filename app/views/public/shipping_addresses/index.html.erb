@@ -1,5 +1,6 @@
 <div class="container">
   <h4 class="my-4">配送先一覧・登録</h4>
+  <%= render 'layouts/errors', obj: @shipping_address %>
   <%= form_with model: @shipping_address, url: shipping_addresses_path, method: :post do |f| %>
     <div class="ml-5">
       <div class="form-group row">

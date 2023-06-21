@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_select_genres, only: [:new, :edit]
+  before_action :set_select_genres
 
   def index
     @items = Item.all
@@ -17,9 +17,9 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_item_path(@item)
+      redirect_to admin_item_path(@item), notice: "商品情報を登録しました。"
     else
-      redirect_to new_admin_item_path
+      render 'new'
     end
   end
 
@@ -29,8 +29,11 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_item_path(@item)
+    if @item.update(item_params)
+      redirect_to admin_item_path(@item), notice: "商品情報を変更しました。"
+    else
+      render 'new'
+    end
   end
 
   private

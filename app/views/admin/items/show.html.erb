@@ -25,7 +25,13 @@
           </tr>
           <tr>
             <td>販売ステータス</td>
-            <td><%= @item.is_sales ? '販売中' : '販売停止中' %></td>
+            <td>
+              <% if @item.is_sales == true %>
+                <p class="text-success"><strong>販売中</strong></p>
+              <% else %>
+                <p class="text-secondary"><strong>販売停止中</strong></p>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
