@@ -4,6 +4,11 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
   end
 
+  def index
+    @customer = Customer.find(params[:customer_id])
+    @orders = @customer.orders
+  end
+
   def update
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order)
@@ -16,7 +21,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
-  
+
   def order_params
     params.require(:order).permit(:status)
   end

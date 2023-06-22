@@ -1,1 +1,58 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Klee+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+
+main, footer {
+  font-family: 'Klee One', cursive;
+}
+
+main {
+  background-color: #fffaf0;
+}
+
+nav, h1, h4 {
+  font-family: 'Zen Kurenaido';
+}
+
+h4, h1 {
+  color: #6c3524;
+}
+
+// ボタンの色の設定
+.btn-success {
+  background: #478384;
+  color: #ffffff;
+  border: 1px solid#478384;
+}
+
+// ボタンの上にポインタを持ってきたときの色
+.btn-success:hover {
+  background: #43676b;
+  color: #ffffff;
+  border: 1px solid#43676b;
+}
+
+.btn-primary {
+  background: #478384;
+  color: #ffffff;
+  border: 1px solid#478384;
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  color: #478384;
+  border: 1px solid#478384;
+}
+
+.btn-danger {
+  background: #990000;
+  color: #ffffff;
+  border: 1px solid#990000;
+}
+
+.btn-danger:hover {
+  background: #660000;
+  color: #ffffff;
+  border: 1px solid#660000;
+}

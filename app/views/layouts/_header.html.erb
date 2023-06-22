@@ -37,43 +37,43 @@
             <p>ようこそ、<%= current_customer.last_name %>さん！</p>
             <li>
               <%= link_to customers_my_page_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">マイページ</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>MyPage</strong><small style= color:#0b0b33;>マイページ</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to items_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">商品一覧</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Products</strong><small style= color:#0b0b33;>商品一覧</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to cart_items_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">カート</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Cart</strong><small style= color:#0b0b33;>カート</small></span>
               <% end %>
             </li>
             <li>
                <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
-                 <span class="btn btn-light">ログアウト</span>
+                 <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log out</strong><small style= color:#0b0b33;>ログアウト</small></span>
                <% end %>
             </li>
           <% else %>
             <li>
               <%= link_to about_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">About</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>About</strong><small style= color:#0b0b33;>概要</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to items_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">商品一覧</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Products</strong><small style= color:#0b0b33;>商品一覧</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to new_customer_registration_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">新規登録</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Sign in</strong><small style= color:#0b0b33;>新規登録</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">ログイン</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log in</strong><small style= color:#0b0b33;>ログイン</small></span>
               <% end %>
             </li>
           <% end %>
