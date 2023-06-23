@@ -4,7 +4,6 @@ class Public::ItemsController < ApplicationController
   def index
     @items = Item.all
     @genres = Genre.all
-    @genre = Genre.joins(:items)
   end
 
   def show

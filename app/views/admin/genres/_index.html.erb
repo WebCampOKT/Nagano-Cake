@@ -7,7 +7,7 @@
   <tbody>
     <% @genres.each do |genre| %>
       <tr class="d-flex align-items-start">
-        <td class="mb-3"><%= link_to genre.name, items_path(@genre) %></td>
+        <td class="mb-3"><%= link_to genre.name, genre_path(genre) %></td>
       </tr>
     <% end %>
   </tbody>
