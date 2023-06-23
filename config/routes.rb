@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'customers/my_page' => 'customers#show'
     get 'customers/infomation/edit' => 'customers#edit'
-    patch  '/customers/infomation' => 'customers#update'
+    patch '/customers/infomation' => 'customers#update'
     # 顧客の退会確認画面
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     # 退会処理用のルーティング

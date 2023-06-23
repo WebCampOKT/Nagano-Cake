@@ -1,8 +1,8 @@
 <div class="container mt-4 pb-5">
-  <h4 class="mb-5 mt-5"><span style="background: #FFEBD2;">新規会員登録</span></h4>
+  <h4 class="mb-5 mt-5"><span class="display">新規会員登録</span></h4>
 
   <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-  <%= render "layouts/errors", obj: resource %>
+  <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="row mb-4">
     <label class="col-lg-2">名前</label>
@@ -82,7 +82,7 @@
   </div>
   <% end %>
 
-  <h4 class="mt-5"><span style="background: #FFEBD2;">既に登録済みの方</span></h4>
+  <h5 class="mb-3"><span style="background: #FFEBD2;">既に登録済みの方</span></h4>
   <div class="col-lg-6">
     <%= link_to "こちら", new_customer_session_path %>&ensp;からログインしてください。
   </div>

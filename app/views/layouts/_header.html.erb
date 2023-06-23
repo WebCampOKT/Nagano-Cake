@@ -10,27 +10,27 @@
           <% if admin_signed_in? %>
             <li>
               <%= link_to admin_items_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">商品一覧</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Products</strong><small style= color:#0b0b33;>商品一覧</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to admin_customers_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">会員一覧</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Customers</strong><small style= color:#0b0b33;>会員一覧</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to admin_homes_top_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">注文履歴一覧</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Oders</strong><small style= color:#0b0b33;>注文履歴一覧</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">ジャンル一覧</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Genres</strong><small style= color:#0b0b33;>ジャンル一覧</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
-                <span class="btn btn-light">ログアウト</span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log out</strong><small style= color:#0b0b33;>ログアウト</small></span>
               <% end %>
             </li>
           <% elsif customer_signed_in? %>
