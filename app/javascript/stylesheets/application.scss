@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 
-main, footer {
+main {
   font-family: 'Klee One', cursive;
 }
 
@@ -15,8 +15,34 @@ nav, h1, h4 {
   font-family: 'Zen Kurenaido';
 }
 
+footer {
+  background-color: #596E79;
+}
+
 h4, h1 {
-  color: #6c3524;
+  color: #1A120B;
+}
+
+.display {
+  position: relative;
+}
+
+.display:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top: solid 3px #1A120B;
+  animation: border_anim 1s linear forwards;
+}
+
+@keyframes border_anim {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 6%;
+  }
 }
 
 // ボタンの色の設定
