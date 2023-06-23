@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       end
     end
     get "search" => "searches#search"
+    resources :genres, only: [:show]
   end
 
   root to: 'public/homes#top'

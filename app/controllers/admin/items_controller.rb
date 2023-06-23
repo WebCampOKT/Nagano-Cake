@@ -3,7 +3,7 @@ class Admin::ItemsController < ApplicationController
   before_action :set_select_genres
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(10)
   end
 
   def show
