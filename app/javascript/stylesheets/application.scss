@@ -59,6 +59,12 @@ h4, h1 {
   border: 1px solid#43676b;
 }
 
+.btn-success:outline {
+  border: 1px solid#43676b;
+  color: #ffffff;
+  background: #43676b;
+}
+
 .btn-primary {
   background: #478384;
   color: #ffffff;
@@ -69,6 +75,12 @@ h4, h1 {
   background: #ffffff;
   color: #478384;
   border: 1px solid#478384;
+}
+
+.btn-primary:outline {
+  border: 1px solid#478384;
+  color: #478384;
+  background: #ffffff;
 }
 
 .btn-danger {
