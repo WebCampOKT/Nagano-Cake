@@ -1,0 +1,15 @@
+<% if @customers == [] %>
+  <h3>Customers search for "<%= @word %>"</h3>
+  <h4>検索結果はありません</h4>
+<% else %>
+  <h3>Customers search for "<%= @word %>"</h3>
+  <%= render 'customer_index', customers: @customers %>
+<% end %>
+
+<% if @items == [] %>
+  <h3>Customers search for "<%= @word %>"</h3>
+  <h4>検索結果はありません</h4>
+<% else %>
+  <h3>Items search for "<%= @word %>"</h3>
+  <%= render 'item_index', items: @items %>
+<% end %>
