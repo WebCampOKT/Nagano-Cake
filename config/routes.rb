@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         delete "clear"
       end
     end
+    resources :genres, only: [:show]
   end
 
   root to: 'public/homes#top'
