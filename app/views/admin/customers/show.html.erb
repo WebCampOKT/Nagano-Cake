@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 pb-4">
   <div class="col-md-12">
     <h4 class="px-4 mb-4"><span style="background: #FFEBD2;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</span></h4>
     <table class="table table-borderless">
@@ -43,7 +43,7 @@
         <td></td>
         <td class="col-md-5">
           <%= link_to "編集する", edit_admin_customer_path(@customer), class: 'btn btn-success' %>&emsp;
-          <%= link_to "注文履歴一覧を見る", orders_path(@customer), class: 'btn btn-primary' %>
+          <%= link_to "注文履歴一覧を見る", admin_customer_orders_path(@customer), class: 'btn btn-primary' %>
         </td>
       </tr>
     </table>
