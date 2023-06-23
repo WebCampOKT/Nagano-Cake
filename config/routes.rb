@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update] do
       resources :order_details, only: [:update]
     end
+    get "search" => "searches#search"
   end
   namespace :public do
     get 'homes/top'
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
         delete "clear"
       end
     end
+    get "search" => "searches#search"
     resources :genres, only: [:show]
   end
 
