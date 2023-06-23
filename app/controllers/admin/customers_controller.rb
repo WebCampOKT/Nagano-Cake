@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
 
   # 会員一覧
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(10)
   end
 
   # 会員詳細画面

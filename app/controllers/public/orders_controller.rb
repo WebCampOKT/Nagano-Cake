@@ -27,6 +27,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @tax = 1.1
     @cart_items = current_customer.cart_items.all
+    @addresses = current_customer.shipping_addresses.all
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.payment = params[:order][:payment]
@@ -57,7 +58,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.page(params[:page]).per(10)
   end
   def show
     @order = Order.find(params[:id])
@@ -67,5 +68,8 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:payment, :postal_code, :address, :name, :status, :total_price, :customer_id, :shipping_cost)
+  end
+  def address_params
+    params.require(:order).permit(:name, :address, :postal_code)
   end
 end
