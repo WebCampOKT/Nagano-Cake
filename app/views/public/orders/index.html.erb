@@ -29,7 +29,7 @@
               </td>
               <td class="align-middle"><%= order.total_price.to_s(:delimited) %>円</td>
               <td class="align-middle"><%= order.status_i18n %></td>
-              <td class="align-middle"><%= link_to '表示する', order_path(order.id), class: 'btn btn-primary' %></td>
+              <td class="align-middle"><%= link_to '表示する', order_path(order.id), class: 'btn btn-base' %></td>
             </tr>
           <% end %>
         </tbody>
