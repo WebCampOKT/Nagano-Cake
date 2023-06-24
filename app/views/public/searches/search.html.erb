@@ -1,2 +1,10 @@
-<h3 class="my-4 ml-4">商品名検索結果: "<%= @word %>"</h3>
-<%= render 'item_index', items: @items %>
+<div class="container">
+  <h3 class="my-4 ml-4">商品名検索結果: "<%= @word %>"</h3>
+  <div class="row mb-5">
+    <div class="col-3 mt-4">
+    </div>
+    <div class="col-9">
+      <%= render '/public/items/item_index', items: @items %>
+    </div>
+  </div>
+</div>

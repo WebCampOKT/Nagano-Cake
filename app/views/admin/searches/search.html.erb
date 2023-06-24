@@ -1,15 +1,25 @@
-<% if @customers == [] %>
-  <h3>Customers search for "<%= @word %>"</h3>
-  <h4>検索結果はありません</h4>
-<% else %>
-  <h3>Customers search for "<%= @word %>"</h3>
-  <%= render 'customer_index', customers: @customers %>
-<% end %>
-
-<% if @items == [] %>
-  <h3>Customers search for "<%= @word %>"</h3>
-  <h4>検索結果はありません</h4>
-<% else %>
-  <h3>Items search for "<%= @word %>"</h3>
-  <%= render 'item_index', items: @items %>
-<% end %>
+<div class="container">
+  <div>
+    <% if @customers == [] %>
+      <h3>Customers search for "<%= @word %>"</h3>
+      <h4 class="pb-5">検索結果はありません</h4>
+    <% else %>
+      <h3>Customers search for "<%= @word %>"</h3>
+      <%= render 'customer_index', customers: @customers %>
+    <% end %>
+  </div>
+  <div>
+    <% if @items == [] %>
+      <h3>Items search for "<%= @word %>"</h3>
+      <h4 class="pb-5">検索結果はありません</h4>
+    <% else %>
+      <h3>Items search for "<%= @word %>"</h3>
+      <div class="row justify-content-between">
+        <div class="col-4 mt-5">
+          <h4><span style="background: #FFEBD2;">商品一覧</span></h4>
+        </div>
+      </div>
+      <%= render '/admin/items/item_index', items: @items %>
+    <% end %>
+  </div>
+</div>
