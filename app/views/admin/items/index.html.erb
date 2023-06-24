@@ -5,42 +5,11 @@
     </div>
     <div class="col-4 mt-4 text-right">
       <%= link_to new_admin_item_path do %>
-        <% image_tag 'plus.png' %>
+        <%= image_tag 'cake.png', class: "plus-button" %>
       <% end %>
     </div>
   </div>
-  <div class="row mb-2">
-    <div class="col-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @items.each do |item| %>
-          <tr>
-            <td><%= item.id %></td>
-            <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
-            <td><%= item.price.to_s(:delimited) %></td>
-            <td><%= item.genre.name %></td>
-            <td>
-              <% if item.is_sales == true %>
-                <p class="text-success"><strong>販売中</strong></p>
-              <% else %>
-                <p class="text-secondary"><strong>販売停止中</strong></p>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <%= render 'item_index', items: @items %>
   <div class="pagination justify-content-center">
     <%= paginate @items %>
   </div>
