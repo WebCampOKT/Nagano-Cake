@@ -1,5 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
-@use '~@fortawesome/fontawesome-free/scss/fontawesome'; 
+@use '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Klee+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 
@@ -104,3 +104,6 @@ h4, h1 {
   border: 1px solid#660000;
 }
 
+.plus-button:hover {
+  opacity: 0.5;
+}
