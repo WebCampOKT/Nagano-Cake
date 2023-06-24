@@ -17,7 +17,7 @@
         <% @items.each do |item| %>
           <div class="pr-4 pb-3">
             <%= link_to item_path(item), class: "text-dark" do %>
-              <%= image_tag item.get_image(180,180) %></br>
+              <%= image_tag item.get_image(180,180), class: "rounded" %></br>
               <%= item.name %></br>
             <% end %>
             ￥<%= item.add_tax_price.to_s(:delimited) %>
