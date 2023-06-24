@@ -1,16 +1,11 @@
 <div class="container">
   <div class="row justify-content-between">
-    <div class="col-4 mt-5 mb-3">
-      <h4><span style="background: #FFEBD2;">商品一覧</span></h4>
-    </div>
-    <div class="col-4 mt-4 text-right">
-      <%= link_to new_admin_item_path do %>
-        <% image_tag 'plus.png' %>
-      <% end %>
+    <div class="col-4 mt-5">
+      <h4><span style="display">商品一覧</span></h4>
     </div>
   </div>
-  <div class="row mb-2">
-    <div class="col-12">
+  <div class="row md-5">
+    <div class="col-md-10">
       <table class="table">
         <thead>
           <tr>
@@ -22,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @items.each do |item| %>
+          <% items.each do |item| %>
           <tr>
             <td><%= item.id %></td>
             <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
@@ -40,8 +35,5 @@
         </tbody>
       </table>
     </div>
-  </div>
-  <div class="pagination justify-content-center">
-    <%= paginate @items %>
   </div>
 </div>

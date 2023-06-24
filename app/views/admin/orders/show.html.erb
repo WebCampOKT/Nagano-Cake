@@ -24,7 +24,7 @@
             <th class="col-2">注文ステータス</th>
             <td class="col-9">
               <%= f.select :status, Order.statuses.keys.map{ |k| [I18n.t("enums.order.status.#{k}"), k]} %>
-              <span><%= f.submit '更新', class: 'btn btn-success' %></span>
+              <span><%= f.submit '更新', class: 'btn btn-base' %></span>
             </td>
           </tr>
         </table>
@@ -55,7 +55,7 @@
                 <td>
                   <%= f.select :product_status, OrderDetail.product_statuses.keys.map{ |k| [I18n.t("enums.order_detail.product_status.#{k}"), k]} %>
                 </td>
-                <td><%= f.submit '更新', class: 'btn btn-success' %></td>
+                <td><%= f.submit '更新', class: 'btn btn-base' %></td>
               </tr>
             <% end %>
           <% end %>

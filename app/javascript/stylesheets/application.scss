@@ -1,6 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
+@use '~@fortawesome/fontawesome-free/scss/fontawesome'; 
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Klee+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 
 main {
@@ -11,12 +11,15 @@ main {
   background-color: #fffaf0;
 }
 
-nav, h1, h4 {
+nav, h1, h4, footer {
   font-family: 'Zen Kurenaido';
 }
 
 footer {
   background-color: #596E79;
+  height: 110px;
+  color: #ffffff;
+  font-size: 25px;
 }
 
 h4, h1 {
@@ -46,46 +49,44 @@ h4, h1 {
 }
 
 // ボタンの色の設定
-.btn-success {
+.btn-base {
   background: #478384;
   color: #ffffff;
   border: 1px solid#478384;
 }
 
 // ボタンの上にポインタを持ってきたときの色
-.btn-success:hover, .btn-success:focus,
-.btn-success:active, .btn-success:active:focus, .btn-success:active:hover, .btn-success:active.focus,
-.btn-success.active, .btn-success.active:focus, .btn-success.active:hover, .btn-success.active.focus,
-.open > .dropdown-toggle.btn-success,
-.open > .dropdown-toggle.btn-success:hover,
-.open > .dropdown-toggle.btn-success:focus,
-.open > .dropdown-toggle.btn-success.focus,
-.btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover,
-.btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus,
-.btn-success.disabled.focus, .btn-success[disabled].focus, fieldset[disabled] .btn-success.focus {
+.btn-base:hover, .btn-base:focus,
+.btn-base:active, .btn-base:active:focus, .btn-base:active:hover, .btn-base:active.focus,
+.btn-base.active, .btn-base.active:focus, .btn-base.active:hover, .btn-base.active.focus,
+.open > .dropdown-toggle.btn-base,
+.open > .dropdown-toggle.btn-base:hover,
+.open > .dropdown-toggle.btn-base:focus,
+.open > .dropdown-toggle.btn-base.focus,
+.btn-base.disabled:hover, .btn-base[disabled]:hover, fieldset[disabled] .btn-base:hover,
+.btn-base.disabled:focus, .btn-base[disabled]:focus, fieldset[disabled] .btn-base:focus,
+.btn-base.disabled.focus, .btn-base[disabled].focus, fieldset[disabled] .btn-base.focus {
   background: #43676b;
   color: #ffffff;
   border: 1px solid#43676b;
 }
 
-
-
-.btn-primary {
+.btn-sm {
   background: #478384;
   color: #ffffff;
   border: 1px solid#478384;
 }
 
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
-.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
-.open > .dropdown-toggle.btn-primary,
-.open > .dropdown-toggle.btn-primary:hover,
-.open > .dropdown-toggle.btn-primary:focus,
-.open > .dropdown-toggle.btn-primary.focus,
-.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus  {
+.btn-sm:hover, .btn-sm:focus,
+.btn-sm:active, .btn-sm:active:focus, .btn-sm:active:hover, .btn-sm:active.focus,
+.btn-sm.active, .btn-sm.active:focus, .btn-sm.active:hover, .btn-sm.active.focus,
+.open > .dropdown-toggle.btn-sm,
+.open > .dropdown-toggle.btn-sm:hover,
+.open > .dropdown-toggle.btn-sm:focus,
+.open > .dropdown-toggle.btn-sm.focus,
+.btn-sm.disabled:hover, .btn-sm[disabled]:hover, fieldset[disabled] .btn-sm:hover,
+.btn-sm.disabled:focus, .btn-sm[disabled]:focus, fieldset[disabled] .btn-sm:focus,
+.btn-sm.disabled.focus, .btn-sm[disabled].focus, fieldset[disabled] .btn-sm.focus  {
   background: #ffffff;
   color: #478384;
   border: 1px solid#478384;
@@ -103,6 +104,3 @@ h4, h1 {
   border: 1px solid#660000;
 }
 
-.plus-button:hover {
-  opacity: 0.5;
-}

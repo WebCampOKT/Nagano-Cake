@@ -1,19 +1,19 @@
 <div class="container">
   <div>
     <% if @customers == [] %>
-      <h3>Customers search for "<%= @word %>"</h3>
+      <h3>顧客検索結果: "<%= @word %>"</h3>
       <h4 class="pb-5">検索結果はありません</h4>
     <% else %>
-      <h3>Customers search for "<%= @word %>"</h3>
+      <h3>顧客検索結果: "<%= @word %>"</h3>
       <%= render 'customer_index', customers: @customers %>
     <% end %>
   </div>
   <div>
     <% if @items == [] %>
-      <h3>Items search for "<%= @word %>"</h3>
+      <h3>商品名検索結果: "<%= @word %>"</h3>
       <h4 class="pb-5">検索結果はありません</h4>
     <% else %>
-      <h3>Items search for "<%= @word %>"</h3>
+      <h3>商品名検索結果: "<%= @word %>"</h3>
       <div class="row justify-content-between">
         <div class="col-4 pt-5">
           <h4><span style="background: #FFEBD2;">商品一覧</span></h4>
