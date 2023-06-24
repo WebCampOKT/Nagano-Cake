@@ -19,7 +19,7 @@
           <div class="form-group">
             <%= f.select :quantity, *[1..10], { include_blank: '個数選択'}, class: "form-select-lg" %>
             <%= f.hidden_field :item_id, :value => @item.id %>
-            <%= f.submit "カートに入れる", class: "btn btn-secondary" %>
+            <%= f.submit "カートに入れる", class: "btn btn-success" %>
           </div>
         <% end %>
       <% else %>

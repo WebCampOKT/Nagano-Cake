@@ -6,7 +6,7 @@
       <%= f.label :name, "ジャンル名", class: "col-3 col-form-label text-center" %>
       <%=f.text_field :name, class: 'form-control', class: "col-3 form-control", placeholder: "ジャンル名" %>
       <div class="ml-3">
-        <%= f.submit '新規登録', class: 'btn btn-success' %>
+        <%= f.submit '新規登録', class: 'btn btn-base' %>
       </div>
     </div>
   <% end %>
@@ -23,7 +23,7 @@
         <% @genres.each do |genre| %>
           <tr>
             <td><%= genre.name %></td>
-            <td><%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
+            <td><%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-base' %></td>
           </tr>
         <% end %>
       </tbody>

@@ -82,12 +82,12 @@
           <% if admin_signed_in? %>
             <%= form_with url: admin_search_path, locol: true, method: :get do |f| %>
               <%= f.text_field :word %>
-              <%= f.submit "検索", class: "btn-sm btn-primary" %>
+              <%= f.submit "検索", class: "btn-sm" %>
             <% end %>
           <% else %>
             <%= form_with url: search_path, local: true, method: :get do |f| %>
               <%= f.text_field :word %>
-              <%= f.submit "検索", class: "btn-sm btn-primary" %>
+              <%= f.submit "検索", class: "btn-sm" %>
             <% end %>
           <% end %>
         </div>
