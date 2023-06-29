@@ -1,0 +1,15 @@
+<div class="container pb-5">
+  <h4 class="mt-3 mb-3"><span style="background: #FFEBD2;">ジャンル編集</span></h4>
+  <%= render 'layouts/errors', obj: @genre %>
+  <%= form_with model: @genre, url: admin_genre_path(@genre) do |f| %>
+    <div class="row">
+      <label class="col-md-2">ジャンル名</label>
+      <div class="col-md-3">
+        <%=f.text_field :name, class: 'form-control', placeholder: 'ジャンル名' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.submit '編集', class: 'btn btn-base' %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,109 @@
+@use '~bootstrap/scss/bootstrap';
+@use '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Klee+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+
+main {
+  font-family: 'Klee One', cursive;
+}
+
+main {
+  background-color: #fffaf0;
+}
+
+nav, h1, h4, footer {
+  font-family: 'Zen Kurenaido';
+}
+
+footer {
+  background-color: #596E79;
+  height: 110px;
+  color: #ffffff;
+  font-size: 25px;
+}
+
+h4, h1 {
+  color: #1A120B;
+}
+
+.display {
+  position: relative;
+}
+
+.display:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-bottom: solid 2px #1A120B;
+  animation: border_anim 1s linear forwards;
+}
+
+@keyframes border_anim {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+
+// ボタンの色の設定
+.btn-base {
+  background: #478384;
+  color: #ffffff;
+  border: 1px solid#478384;
+}
+
+// ボタンの上にポインタを持ってきたときの色
+.btn-base:hover, .btn-base:focus,
+.btn-base:active, .btn-base:active:focus, .btn-base:active:hover, .btn-base:active.focus,
+.btn-base.active, .btn-base.active:focus, .btn-base.active:hover, .btn-base.active.focus,
+.open > .dropdown-toggle.btn-base,
+.open > .dropdown-toggle.btn-base:hover,
+.open > .dropdown-toggle.btn-base:focus,
+.open > .dropdown-toggle.btn-base.focus,
+.btn-base.disabled:hover, .btn-base[disabled]:hover, fieldset[disabled] .btn-base:hover,
+.btn-base.disabled:focus, .btn-base[disabled]:focus, fieldset[disabled] .btn-base:focus,
+.btn-base.disabled.focus, .btn-base[disabled].focus, fieldset[disabled] .btn-base.focus {
+  background: #43676b;
+  color: #ffffff;
+  border: 1px solid#43676b;
+}
+
+.btn-sm {
+  background: #478384;
+  color: #ffffff;
+  border: 1px solid#478384;
+}
+
+.btn-sm:hover, .btn-sm:focus,
+.btn-sm:active, .btn-sm:active:focus, .btn-sm:active:hover, .btn-sm:active.focus,
+.btn-sm.active, .btn-sm.active:focus, .btn-sm.active:hover, .btn-sm.active.focus,
+.open > .dropdown-toggle.btn-sm,
+.open > .dropdown-toggle.btn-sm:hover,
+.open > .dropdown-toggle.btn-sm:focus,
+.open > .dropdown-toggle.btn-sm.focus,
+.btn-sm.disabled:hover, .btn-sm[disabled]:hover, fieldset[disabled] .btn-sm:hover,
+.btn-sm.disabled:focus, .btn-sm[disabled]:focus, fieldset[disabled] .btn-sm:focus,
+.btn-sm.disabled.focus, .btn-sm[disabled].focus, fieldset[disabled] .btn-sm.focus  {
+  background: #ffffff;
+  color: #478384;
+  border: 1px solid#478384;
+}
+
+.btn-danger {
+  background: #990000;
+  color: #ffffff;
+  border: 1px solid#990000;
+}
+
+.btn-danger:hover {
+  background: #660000;
+  color: #ffffff;
+  border: 1px solid#660000;
+}
+
+.plus-button:hover {
+  opacity: 0.5;
+}

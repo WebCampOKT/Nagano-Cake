@@ -1,0 +1,46 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+  enums:
+    order:
+      status:
+        payment_waiting: "入金待ち"
+        payment_confirmation: "入金確認"
+        production: "製作中"
+        shipping_preparation: "発送準備中"
+        sent: "発送済み"
+      payment:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+    order_detail:
+      product_status:
+        impossible: "着手不可"
+        waiting: "製作待ち"
+        production: "製作中"
+        completion: "製作完了"
+  activerecord:
+    models:
+      item: "商品"
+    attributes:
+      item:
+        name: "商品名"
+        caption: "商品説明"
+        genre: "ジャンル"
+        price: "税抜価格"
+      genre:
+        name: "ジャンル名"
+      shipping_address:
+        postal_code: "郵便番号"
+        address: "住所"
+        name: "宛名"
+      customer:
+        first_name: "名前（名）"
+        last_name: "名前（姓）"
+        first_name_kana: "フリガナ（メイ）"
+        last_name_kana: "フリガナ（セイ）"
+        email: "メールアドレス"
+        password: "パスワード"
+        postal_code: "郵便番号"
+        address: "住所"
+        phone_number: "電話番号"

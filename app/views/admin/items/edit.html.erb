@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row pb-5">
+    <div class="w-75 mx-auto">
+      <h4 class="mt-5"><span style="background: #FFEBD2;">商品編集</span></h4>
+      <div class="col w-75 mx-auto">
+        <%= render 'layouts/errors', obj: @item %>
+        <%= render 'form', item: @item, genres: @genres %>
+      </div>
+    </div>
+  </div>
+</div>

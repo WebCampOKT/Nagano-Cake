@@ -1,0 +1,11 @@
+<div class="container mt-4 pb-4">
+  <h4 class="px-4 mb-4"><span style="background: #FFEBD2;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</span></h4>
+
+  <div class="row mb-4 ">
+    <label class="col-lg-3">会員ID</label>
+    <div class="col-lg-4">
+      <%= @customer.id %>
+    </div>
+  </div>
+  <%= render 'form', customer: @customer %>
+</div>

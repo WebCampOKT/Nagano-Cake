@@ -1,0 +1,14 @@
+<table class="border bordered" style="width: 170px;height: 200px;border-collapse: separate;border-radius: 5px;background-color: #478384;">
+  <thead class="table table-borderless">
+    <tr class="text-center">
+      <th style="color:white;">ジャンル検索</th>
+    </tr>
+  </thead>
+  <tbody style="background-color: white;">
+    <% @genres.each do |genre| %>
+      <tr class="d-flex align-items-start">
+        <td class="ml-2 mb-3"><li><%= link_to genre.name, genre_path(genre),  class: "text-dark" %></li></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
